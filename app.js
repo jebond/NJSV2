@@ -4,7 +4,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var whois = require('node-xwhois');
 var cookieParser = require('cookie-parser');
-var ioidhostname = {};
+var ioidhostname = [];
 //app config
 app.use(cookieParser());
 //server init
@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
   var sessionid = req.cookies;
-  ioidhostname.push(sessionid => hostname);
+  ioidhostname.push{"hostname" => hostname,"sessionid":sessionid};
   res.sendFile(__dirname + '/index.html');
   res.cookie('TNTScale',hostname);
 });
