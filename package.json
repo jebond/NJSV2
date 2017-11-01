@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "node-xwhois": "^1.0.7",
     "socket.io": "^2.0.4"
