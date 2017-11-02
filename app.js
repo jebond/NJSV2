@@ -14,26 +14,21 @@ console.log('Here we are again listening on port 80');
 //routes
 
 app.get('/', function (req, res) {
-  	  ip = req.ip;
-      simpleip = ip.substr(7);
-      require('dns').reverse(simpleip, function(err, domains) {
-    	if(err) {
-        console.log(err.toString());
-        return;
-    	}
-    domains = hostname;
-});
-      //.then(hostnames => hostname = hostnames);
+  
   if(req.cookies['TNTScale']) {
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
-  res.sendFile(__dirname + '/index.html');
-  }
   else {
-  res.cookie('TNTScale',hostname);
-  }
-  //console.log(ioidhostname);
+  	ip = req.ip;
+      simpleip = ip.substr(7);
+      require('dns').reverse(simpleip, function(domains) {
+    domains = hostname;
+  	res.cookie('TNTScale',hostname);
+  	}
+}
+  res.sendFile(__dirname + '/index.html');
+  }  	  
 });
 
 //postroute for the service
