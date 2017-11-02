@@ -11,9 +11,10 @@ $(function() {
   setSocketName();
 
   function setSocketName () {
-    var TNTCookie = Cookies.get('TNTScale');
-    socket.connect('http://10.101.1.213');
-    socket.emit('creategroup',TNTCookie);
+    //var TNTCookie = Cookies.get('TNTScale');
+    TNTCookie = 'tnt085.trollandtoad.com';
+    socket.emit('connection');
+    socket.emit('creategroup', {"roomname" : TNTCookie});
     }
 
   function addWeight (data, options) {

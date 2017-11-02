@@ -54,9 +54,9 @@ app.post('/addweight/', function(req, res) {
 //events
 io.on('connection', function (socket) {
   
-  socket.on('creategroup',function(username){
+  socket.on('creategroup',function(data){
     	console.log('hello from on.connection');
-    	socket.join(username);
+    	socket.join(data.roomname);
     })
   
   socket.on('new message', function (data) {
