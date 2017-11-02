@@ -18,11 +18,13 @@ app.get('/', function (req, res) {
   	ip = req.ip;
       simpleip = ip.substr(7);
       var resolved = dnsResolve(simpleip,res);
-      if (isset(resolved))
+      if (isset(resolved)) {
       res.cookie('TNTscale',domains);
       res.sendFile(__dirname + '/index.html');
-      else
+      }
+      else {
       res.sendFile(__dirname + '/index.html');  	  
+}
 });
 
 //events
