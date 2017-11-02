@@ -16,8 +16,9 @@ console.log('Here we are again listening on port 80');
 app.get('/', function (req, res) {
   	  ip = req.ip;
       simpleip = ip.substr(7);
-      whois.reverse(simpleip)
-      .then(hostnames => hostname = hostnames);
+      var hostname = whois.reverse(simpleip)
+      console.log(hostname);
+      //.then(hostnames => hostname = hostnames);
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
