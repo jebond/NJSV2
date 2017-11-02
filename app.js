@@ -33,9 +33,8 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
     socket.on('creategroup',function(username){
     	socket.join(username);
-    }
+    })
   })
-})
 
 //helping functions
 function dnsResolve(ip) {
