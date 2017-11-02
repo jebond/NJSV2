@@ -31,6 +31,7 @@ app.get('/', function (req, res) {
 
 //postroute for the service
 app.post('/addweight/', function(req, res) {
+    console.log(req.body);
     var weight = req.body.weight;
     var computername = req.body.computername;
       socket.to(computername).emit('new message',{
