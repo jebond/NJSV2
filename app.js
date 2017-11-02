@@ -28,8 +28,7 @@ app.get('/', function (req, res) {
   	res.cookie('TNTScale',hostname);
   	})
 }
-  res.sendFile(__dirname + '/index.html');
-  }  	  
+  res.sendFile(__dirname + '/index.html');  	  
 });
 
 //postroute for the service
