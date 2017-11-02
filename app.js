@@ -41,19 +41,19 @@ app.post('/addweight/', function(req, res) {
 
 app.get('/', function (req, res) {
   
-  if(req.cookies['TNTScale']) {
-  var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
-  var sessionid = cook;
-  ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
-}
-  else {
+  //if(req.cookies['TNTScale']) {
+  //var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
+  //var sessionid = cook;
+  //ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
+//}
+  //else {
   	ip = req.ip;
       simpleip = ip.substr(7);
       require('dns').reverse(simpleip, function(domains) {
     domains = hostname;
   	res.cookie('TNTScale',hostname);
   	})
-}
+//}
   res.sendFile(__dirname + '/index.html');  	  
 });
 
