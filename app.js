@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
       require('dns').reverse(simpleip, function(domains) {
     domains = hostname;
   	res.cookie('TNTScale',hostname);
-  	}
+  	})
 }
   res.sendFile(__dirname + '/index.html');
   }  	  
