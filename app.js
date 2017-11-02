@@ -14,7 +14,6 @@ console.log('Here we are again listening on port 80');
 app.get('/', function (req, res) {
   ip = req.ip;
       simpleip = ip.substr(7);
-      console.log(simpleip);
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
   var sessionid = req.cookies;
