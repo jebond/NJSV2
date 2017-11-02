@@ -14,13 +14,14 @@ console.log('Here we are again listening on port 80');
 //routes
 app.get('/', function (req, res) {
   
-  while (hostname === null)
+  do
   {
   	  ip = req.ip;
       simpleip = ip.substr(7);
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
   }
+  while (hostname === null);
 
   var sessionid = req.cookies;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
