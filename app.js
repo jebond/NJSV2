@@ -19,6 +19,7 @@ app.get('/', function (req, res) {
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
+}
   else {
   	ip = req.ip;
       simpleip = ip.substr(7);
