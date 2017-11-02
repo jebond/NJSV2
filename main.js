@@ -13,7 +13,7 @@ $(function() {
   function setSocketName () {
     var TNTCookie = Cookies.get('TNTScale');
     socket.connect('http://10.101.1.213');
-    socket.on('creategroup',TNTCookie);
+    socket.emit('creategroup',TNTCookie);
     }
 
   function addWeight (data, options) {
