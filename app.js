@@ -40,7 +40,7 @@ io.on('connection', function (socket) {
 function dnsResolve(ip) {
       whois.reverse(ip)
       .then(hostnames => hostname = hostnames);
-      if (hostname === null || hostname === undefined) {
+      if (hostname === null || hostname === undefined || hostname === "undefined") {
       	whois.reverse(ip)
       .then(hostnames => hostname = hostnames);
       }
