@@ -21,17 +21,17 @@ app.get('/', function (req, res) {
         console.log(err.toString());
         return;
     	}
-    console.log(domains);
+    domains = hostname;
 });
       //.then(hostnames => hostname = hostnames);
   if(req.cookies['TNTScale']) {
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
   var sessionid = cook;
-  ioidhostname.push({"hostname": domains,"sessionid":sessionid});
+  ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
   }
   else {
-  res.cookie('TNTScale',domains);
+  res.cookie('TNTScale',hostname);
   }
   //console.log(ioidhostname);
 });
