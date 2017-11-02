@@ -18,13 +18,28 @@ app.get('/', function (req, res) {
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
-  console.log(cook);
+  client.join(cook);
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
-  res.cookie('TNTScale',hostname,{http:true});
+  res.cookie('TNTScale',hostname);
   //console.log(ioidhostname);
 });
+
+//postroute for the service
+app.post('/addweight/', function(req, res) {
+    var weight = req.body.weight;
+    var computername = req.body.computername;
+      socket.to(computername).emit('new message',{
+      username : computername,
+      message : weight,
+      computername : computername
+
+});
+    res.sendStatus(200);
+});
+
+
 //events
 io.on('connection', function (socket) {
   socket.emit('hostinformation', { 
