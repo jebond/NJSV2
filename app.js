@@ -12,10 +12,14 @@ server.listen(80);
 console.log('Here we are again listening on port 80');
 //routes
 app.get('/', function (req, res) {
-  ip = req.ip;
+  while (hostname === undefined)
+  {
+  	  ip = req.ip;
       simpleip = ip.substr(7);
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
+  }
+  
   var sessionid = req.cookies;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
