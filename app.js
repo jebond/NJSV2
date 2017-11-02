@@ -43,5 +43,4 @@ function dnsResolve(ip) {
       whois.reverse(ip)
       .then(hostnames => hostname = hostnames);
       return hostname;
-  	}
-}
+ }
