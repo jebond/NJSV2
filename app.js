@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var dns = require('dns');
 var ioidhostname = [];
 var hostname = null;
+var resolved = null
 //app config
 app.use(cookieParser());
 //server init
@@ -17,8 +18,8 @@ console.log('Here we are again listening on port 80');
 app.get('/', function (req, res) {
   	ip = req.ip;
       simpleip = ip.substr(7);
-      var resolved = dnsResolve(simpleip,res);
-      if (isset(resolved)) {
+      resolved = dnsResolve(simpleip,res);
+      if (resolved != null) {
       res.cookie('TNTscale',domains);
       res.sendFile(__dirname + '/index.html');
       }
