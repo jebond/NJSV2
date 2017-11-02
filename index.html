@@ -11,7 +11,8 @@
   }
     var TNTScaleCookie = Cookies.get('TNTScale'); // => "value"
   	console.log(TNTScaleCookie);
-  	var socket = io.connect('http://10.101.1.213','testtesttest');
+  	var socket = io.connect('http://10.101.1.213');
+  	socket.on('creategroup',TNTScaleCookie);
   });
 </script>
 <center>

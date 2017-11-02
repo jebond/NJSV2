@@ -30,10 +30,12 @@ app.get('/', function (req, res) {
 });
 
 //events
-io.on('connection', function (socket,data) {
-    console.log('This is submitted with the connection ' + data);
-    socket.join(data);
-  });
+io.on('connection', function (socket) {
+    socket.on('creategroup',function(username){
+    	socket.join(username);
+    }
+  })
+})
 
 //helping functions
 function dnsResolve(ip) {
