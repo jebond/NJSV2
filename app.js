@@ -4,6 +4,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var whois = require('node-xwhois');
 var cookieParser = require('cookie-parser');
+var dns = require('dns');
 var ioidhostname = [];
 var hostname = null;
 //app config
@@ -16,10 +17,7 @@ console.log('Here we are again listening on port 80');
 app.get('/', function (req, res) {
   	ip = req.ip;
       simpleip = ip.substr(7);
-      require('dns').reverse(simpleip, function(domains) {
-      domains = hostname;
-  	  res.cookie('TNTScale',hostname);
-  	})
+      dnsResolve(simpleip);
   res.sendFile(__dirname + '/index.html');  	  
 });
 
@@ -31,3 +29,10 @@ io.on('connection', function (socket) {
     socket.join(cook);
   });
 });
+
+//helping functions
+function dnsResolve(ip) {
+dns.reverse(ip, function(domains) {
+  	  res.cookie('TNTScale',domains);
+  	})
+}
