@@ -5,6 +5,8 @@ var io = require('socket.io')(server);
 var whois = require('node-xwhois');
 var cookieParser = require('cookie-parser');
 var ioidhostname = [];
+var bodyParser = require('body-parser')
+var path = require('path');
 var hostname = null;
 var resolved = null
 //app config
