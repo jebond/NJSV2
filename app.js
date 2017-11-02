@@ -17,7 +17,8 @@ app.get('/', function (req, res) {
       simpleip = ip.substr(7);
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
-  var cook = cookieParser(req.cookies);
+  var cook = cookieParser.JSONCookies(req.cookies);
+  console.log(cook);
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
