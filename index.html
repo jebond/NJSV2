@@ -6,11 +6,11 @@
 	function addWeight (data, options) {
     $(".shipweight").val(data.message);
   }
-  	var socket = io.connect('http://10.101.1.213');
-  	socket.on('hostinformation', function (data) {
-    socket.emit('room');
+    if($.cookie('TNTScale')) {
+    var TNTScaleCookie = $.cookie('TNTScale'); // => "value"
+  	var socket = io.connect('http://10.101.1.213',TNTScaleCookie);
+   }
   });
-});
 </script>
 </head>
 <body>
