@@ -32,6 +32,7 @@ app.get('/', function (req, res) {
 //events
 io.on('connection', function (socket) {
     socket.on('creategroup',function(username){
+    	console.log('hellow from on.connection');
     	socket.join(username);
     })
   })
