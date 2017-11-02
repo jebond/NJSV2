@@ -19,6 +19,7 @@ app.get('/', function (req, res) {
       simpleip = ip.substr(7);
       var resolved = dnsResolve(simpleip,res);
       if (isset(resolved))
+      res.cookie('TNTscale',domains);
       res.sendFile(__dirname + '/index.html');
       else
       res.sendFile(__dirname + '/index.html');  	  
@@ -36,7 +37,6 @@ io.on('connection', function (socket) {
 //helping functions
 function dnsResolve(ip,res) {
 dns.reverse(ip, function(domains) {
-  	  res.cookie('TNTScale',domains);
+	return domains;
   	})
-return domains;
 }
