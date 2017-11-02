@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
-  res.cookie('TNTScale',hostname);
+  res.cookie('TNTScale',hostname,{http:true});
   //console.log(ioidhostname);
 });
 //events
