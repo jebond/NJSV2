@@ -17,7 +17,8 @@ app.get('/', function (req, res) {
       simpleip = ip.substr(7);
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
-  var sessionid = req.cookies;
+  var cook = cookieParser(req.cookies);
+  var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
   res.cookie('TNTScale',hostname);
