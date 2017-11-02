@@ -9,7 +9,7 @@ var hostname = null;
 var resolved = null
 //app config
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(app.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
