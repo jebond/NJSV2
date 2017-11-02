@@ -8,7 +8,7 @@
 	function addWeight (data, options) {
     $(".shipweight").val(data.message);
   }
-    if($.cookie('TNTScale')) {
+    if(Cookies.get('TNTScale')) {
     var TNTScaleCookie = Cookies.get('TNTScale'); // => "value"
   	console.log(TNTScaleCookie);
   	var socket = io.connect('http://10.101.1.213',TNTScaleCookie);
