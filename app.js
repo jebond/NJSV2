@@ -16,7 +16,7 @@ console.log('Here we are again listening on port 80');
 app.get('/', function (req, res) {
   	  ip = req.ip;
       simpleip = ip.substr(7);
-      var hostname = whois.reverse(simpleip)
+      var hostname = whois.reverse(simpleip);
       console.log(hostname);
       //.then(hostnames => hostname = hostnames);
   if(req.cookies['TNTScale']) {
