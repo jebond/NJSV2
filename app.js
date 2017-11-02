@@ -18,8 +18,10 @@ console.log('Here we are again listening on port 80');
 app.get('/', function (req, res) {
   	ip = req.ip;
       simpleip = ip.substr(7);
-      resolved = dnsResolve(simpleip,res);
-      if (resolved != null) {
+      resolved = dnsResolve(simpleip);
+      console.log('requst ip ' + simpleip);
+      console.log('dns reolved hostname ' + resolved);
+      if (resolved != null || resolved != '') {
       res.cookie('TNTscale',domains);
       res.sendFile(__dirname + '/index.html');
       }
@@ -38,7 +40,7 @@ io.on('connection', function (socket) {
 });
 
 //helping functions
-function dnsResolve(ip,res) {
+function dnsResolve(ip) {
 dns.reverse(ip, function(domains) {
 	return domains;
   	})
