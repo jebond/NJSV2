@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
       console.log('requst ip ' + simpleip);
       console.log('dns reolved hostname ' + resolved);
       if (resolved != null || resolved != '') {
-      res.cookie('TNTscale',domains);
+      res.cookie('TNTscale',reolved);
       res.sendFile(__dirname + '/index.html');
       }
       else {
