@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
   res.cookie('TNTScale',hostname);
-  console.log(ioidhostname);
+  //console.log(ioidhostname);
 });
 //events
 io.on('connection', function (socket) {
