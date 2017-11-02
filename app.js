@@ -27,11 +27,11 @@ app.get('/', function (req, res) {
   if(req.cookies['TNTScale']) {
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
   var sessionid = cook;
-  ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
+  ioidhostname.push({"hostname": domains,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
   }
   else {
-  res.cookie('TNTScale',hostname);
+  res.cookie('TNTScale',domains);
   }
   //console.log(ioidhostname);
 });
