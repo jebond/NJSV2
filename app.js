@@ -19,11 +19,15 @@ app.get('/', function (req, res) {
       var hostname = whois.reverse(simpleip)
       console.log(hostname);
       //.then(hostnames => hostname = hostnames);
+  if(req.cookies['TNTScale']) {
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
+  }
+  else {
   res.cookie('TNTScale',hostname);
+  }
   //console.log(ioidhostname);
 });
 
