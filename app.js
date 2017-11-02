@@ -17,7 +17,7 @@ console.log('Here we are again listening on port 80');
 app.get('/', function (req, res) {
   	ip = req.ip;
       simpleip = ip.substr(7);
-      dnsResolve(simpleip);
+      dnsResolve(simpleip,res);
   res.sendFile(__dirname + '/index.html');  	  
 });
 
@@ -31,7 +31,7 @@ io.on('connection', function (socket) {
 });
 
 //helping functions
-function dnsResolve(ip) {
+function dnsResolve(ip,res) {
 dns.reverse(ip, function(domains) {
   	  res.cookie('TNTScale',domains);
   	})
