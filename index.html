@@ -3,8 +3,9 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-<script>
-  $(function() {
+</head>
+<body>
+ <script>$(function() {
 	function addWeight (data, options) {
     $(".shipweight").val(data.message);
   }
@@ -15,8 +16,6 @@
    }
   });
 </script>
-</head>
-<body>
 <center>
 <h1><label for shipweight>Shipping weight</label></h1>
 <input type="text" class="shipweight" id="shipweight">
