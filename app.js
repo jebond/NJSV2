@@ -4,7 +4,6 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var whois = require('node-xwhois');
 var cookieParser = require('cookie-parser');
-var dns = require('dns');
 var ioidhostname = [];
 var hostname = null;
 var resolved = null
@@ -41,7 +40,8 @@ io.on('connection', function (socket) {
 
 //helping functions
 function dnsResolve(ip) {
-dns.reverse(ip, function(domains) {
-	return domains;
-  	})
+      whois.reverse(ip)
+      .then(hostnames => hostname = hostnames);
+      return hostname;
+  	}
 }
