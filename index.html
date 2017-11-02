@@ -2,13 +2,14 @@
 <head>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script>
   $(function() {
 	function addWeight (data, options) {
     $(".shipweight").val(data.message);
   }
     if($.cookie('TNTScale')) {
-    var TNTScaleCookie = $.cookie('TNTScale'); // => "value"
+    var TNTScaleCookie = Cookies.get('TNTScale'); // => "value"
   	console.log(TNTScaleCookie);
   	var socket = io.connect('http://10.101.1.213',TNTScaleCookie);
    }
