@@ -13,47 +13,13 @@ server.listen(80);
 console.log('Here we are again listening on port 80');
 //routes
 
-app.get('/gethostname/',function(req,res)
-{
-      ip = req.ip;
-      simpleip = ip.substr(7);
-      whois.reverse(simpleip)
-      .then(hostnames => hostname = hostnames);
-	  var randomNumber=Math.random().toString();
-	  randomNumber=randomNumber.substring(2,randomNumber.length);
-	  res.cookie('TNTCookie',hostname);
-      res.json({"success": true, "ipaddress" : simpleip, "hostname": hostname});
-})
-
-//postroute for the service
-app.post('/addweight/', function(req, res) {
-    var weight = req.body.weight;
-    var computername = req.body.computername;
-      socket.to(computername).emit('new message',{
-      username : computername,
-      message : weight,
-      computername : computername
-
-});
-    res.sendStatus(200);
-});
-
-
 app.get('/', function (req, res) {
-  
-  //if(req.cookies['TNTScale']) {
-  //var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
-  //var sessionid = cook;
-  //ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
-//}
-  //else {
   	ip = req.ip;
       simpleip = ip.substr(7);
       require('dns').reverse(simpleip, function(domains) {
-    domains = hostname;
-  	res.cookie('TNTScale',hostname);
+      domains = hostname;
+  	  res.cookie('TNTScale',hostname);
   	})
-//}
   res.sendFile(__dirname + '/index.html');  	  
 });
 
