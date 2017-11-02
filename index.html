@@ -2,8 +2,7 @@
 <script>
   var socket = io.connect('http://localhost');
   socket.on('hostinformation', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
+    socket.emit('room');
   });
 </script>
       

@@ -12,13 +12,13 @@ app.use(cookieParser());
 server.listen(80);
 console.log('Here we are again listening on port 80');
 //routes
+
 app.get('/', function (req, res) {
   	  ip = req.ip;
       simpleip = ip.substr(7);
       whois.reverse(simpleip)
       .then(hostnames => hostname = hostnames);
   var cook = cookieParser.JSONCookies(req.cookies['TNTScale']);
-  socket.join(cook);
   var sessionid = cook;
   ioidhostname.push({"hostname": hostname,"sessionid":sessionid});
   res.sendFile(__dirname + '/index.html');
@@ -44,10 +44,7 @@ app.post('/addweight/', function(req, res) {
 io.on('connection', function (socket) {
   socket.emit('hostinformation', { 
   	hostname: ioidhostname });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  socket.on('room', function (data) {
+    socket.join(cook);
   });
-  socket.on('join',function(data){
-  console.log(ioidhostname);
-  })
 });
