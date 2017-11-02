@@ -11,14 +11,9 @@ $(function() {
   setSocketName();
 
   function setSocketName () {
-    jQuery.get('http://10.101.1.213:3001/gethostname/',function(data,status)
-      {
-        username = data.hostname[0];
-        ipaddress = data.ipaddress;
-		TNTCookie = $.cookie('TNTCookie');
-		io.connect('http://10.101.1.213:3001');
-		socket.emit('add user', TNTCookie);
-      })
+    var TNTCookie = Cookies.get('TNTScale');
+    socket.connect('http://10.101.1.213');
+    socket.on('creategroup',TNTCookie);
     }
 
   function addWeight (data, options) {

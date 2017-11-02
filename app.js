@@ -29,13 +29,34 @@ app.get('/', function (req, res) {
 }
 });
 
+//postroute for the service
+app.post('/addweight/', function(req, res) {
+    var weight = req.body.weight;
+    var computername = req.body.computername;
+      socket.to(computername).emit('new message',{
+      username : computername,
+      message : weight,
+      computername : computername
+});
+    res.sendStatus(200);
+});
+
 //events
 io.on('connection', function (socket) {
-    socket.on('creategroup',function(username){
+  
+  socket.on('creategroup',function(username){
     	console.log('hello from on.connection');
     	socket.join(username);
     })
-  })
+  
+  socket.on('new message', function (data) {
+    // we tell the client to execute 'new message'
+    socket.broadcast.emit('new message', {
+      username: socket.username,
+      message: data
+    });
+  });
+})
 
 //helping functions
 function dnsResolve(ip) {
