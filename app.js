@@ -40,5 +40,11 @@ io.on('connection', function (socket) {
 function dnsResolve(ip) {
       whois.reverse(ip)
       .then(hostnames => hostname = hostnames);
+      if (hostname === null) {
+      	whois.reverse(ip)
+      .then(hostnames => hostname = hostnames);
+      }
+      else {
       return hostname;
+   }
  }
