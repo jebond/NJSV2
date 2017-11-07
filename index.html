@@ -3,51 +3,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-<script type="text/javascript">
-$(function() {
-  var $window = $(window);
-  var socket = io();
-  var username = '';
-  var connected = true;
-  var typing = false;
-  var resstatus;
-  var ipaddress;
-  var TNTCookie;  
-
-  setSocketName();
-
-  function setSocketName () {
-    //var TNTCookie = Cookies.get('TNTScale');
-    TNTCookie = 'tnt085.trollandtoad.com';
-    socket.emit('connection');
-    socket.emit('creategroup', {"roomname" : TNTCookie});
-    }
-
-  function addWeight (data, options) {
-    $(".shipweight").val(data.message);
-  }
-
-  socket.on('new message', function (data) {
-    addWeight(data);
-  });
-
-  socket.on('disconnect', function () {
-    log('you have been disconnected, you ass!');
-  });
-
-  socket.on('reconnect', function () {
-    log('you have been reconnected, finally. Ass!');
-    if (username) {
-      socket.emit('add user', username);
-    }
-  });
-
-  socket.on('reconnect_error', function () {
-    log('attempt to reconnect has failed, suites you right. Ass!');
-  });
-});
-</script>
-
+<script src="/public/main.js"></script>
 </head>
 <body>
 <center>

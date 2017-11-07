@@ -12,7 +12,7 @@ var hostname = null;
 var resolved = null
 //app config
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -31,10 +31,10 @@ app.get('/', function (req, res) {
       console.log('dns reolved hostname ' + resolved);
       if (resolved != null || resolved != '') {
       res.cookie('TNTscale',resolved);
-      res.sendFile(__dirname + '/public/index.html');
+      res.sendFile(__dirname + 'index.html');
       }
       else {
-      res.sendFile(__dirname + '/public/index.html');  	  
+      res.sendFile(__dirname + 'index.html');  	  
 }
 });
 
