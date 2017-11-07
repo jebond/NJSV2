@@ -19,7 +19,7 @@
 
   function setSocketName () {
     var TNTCookieTest = Cookies.get();
-    var hostname = TNTCookieTest.value;
+    var hostname = TNTCookieTest["value"];
     console.log(hostname); 
     TNTCookie = 'tnt085.trollandtoad.local';
     socket.emit('creategroup', {"roomname" : TNTCookie});
