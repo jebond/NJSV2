@@ -4,9 +4,10 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script type="text/javascript">
-	$(function() {
+	
+  $(function() {
   var $window = $(window);
-  var socket = io();
+  var socket = io.connect();
   var username = '';
   var connected = true;
   var typing = false;
@@ -19,7 +20,6 @@
   function setSocketName () {
     //var TNTCookie = Cookies.get('TNTScale');
     TNTCookie = 'tnt085.trollandtoad.com';
-    socket.emit('connection');
     socket.emit('creategroup', {"roomname" : TNTCookie});
     }
 
