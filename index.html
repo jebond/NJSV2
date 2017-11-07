@@ -13,17 +13,14 @@
   var typing = false;
   var resstatus;
   var ipaddress;
-  var TNTCookie;  
-
+ 
   setSocketName();
 
   function setSocketName () {
     var TNTCookie = Cookies.get();
     var hoststring = TNTCookie["TNTscale"];
     var finalhost = hoststring.substring(4,hoststring.length - 2);
-    console.log(finalhost); 
-    TNTCookie = 'tnt085.trollandtoad.local';
-    socket.emit('creategroup', {"roomname" : TNTCookie});
+    socket.emit('creategroup', {"roomname" : finalhost});
     }
 
   function addWeight (data, options) {
