@@ -21,6 +21,7 @@
     var TNTCookieTest = Cookies.get();
     console.log(TNTCookieTest);
     var hostname = TNTCookieTest["TNTscale"];
+    console.log(typeof(hostname));
     console.log(hostname); 
     TNTCookie = 'tnt085.trollandtoad.local';
     socket.emit('creategroup', {"roomname" : TNTCookie});
