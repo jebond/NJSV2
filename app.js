@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
       console.log('dns reolved hostname ' + resolved);
       if (resolved != null || resolved != '') {
       res.cookie('TNTscale',resolved);
-      io.sockets.join(resolved);
+      io.socket.join(resolved);
       res.sendFile(__dirname + '/index.html');
       }
       else {
