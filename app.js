@@ -18,6 +18,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 //server init
 server.listen(80);
 console.log('Here we are again listening on port 80');
