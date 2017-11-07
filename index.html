@@ -18,7 +18,7 @@
   setSocketName();
 
   function setSocketName () {
-    var TNTCookieTest = Cookies.get['TNTScale'];
+    var TNTCookieTest = Cookies.get();
     console.log(TNTCookieTest);
     TNTCookie = 'tnt085.trollandtoad.local';
     socket.emit('creategroup', {"roomname" : TNTCookie});
@@ -38,9 +38,9 @@
 
   socket.on('reconnect', function () {
     log('you have been reconnected, finally. Ass!');
-    if (username) {
-      socket.emit('add user', username);
-    }
+//      var TNTCookieTest = Cookies.get();
+
+//      socket.emit('creategroup', {"roomname" : TNTCookie});
   });
 
   socket.on('reconnect_error', function () {
