@@ -56,6 +56,8 @@ io.on('connection', function (socket) {
   socket.on('creategroup',function(data){
     	//console.log('hello from on.connection');
     	//console.log(data.roomname);
+      console.log(typeof(data.roomname));
+      console.log(data.roomname.length);
       socket.join(data.roomname);
     })
 });
