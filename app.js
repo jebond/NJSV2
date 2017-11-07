@@ -27,11 +27,8 @@ app.get('/', function (req, res) {
   	ip = req.ip;
       simpleip = ip.substr(7);
       resolved = dnsResolve(simpleip);
-     // console.log('requst ip ' + simpleip);
-     // console.log('dns reolved hostname ' + resolved);
       if (resolved != null || resolved != '') {
       res.cookie('TNTscale',resolved);
-      //io.socket.join(resolved);
       res.sendFile(__dirname + '/index.html');
       }
       else {
@@ -44,8 +41,6 @@ app.post('/addweight/', function(req, res) {
 
     var weight = req.body.weight;
     var computername = req.body.computername;
-    //console.log(weight);
-    //console.log(computername);
     io.sockets.in(computername).emit('new message',{
     username : computername,
     message : weight,
@@ -59,7 +54,6 @@ io.on('connection', function (socket) {
   socket.on('creategroup',function(data){
     	//console.log('hello from on.connection');
     	//console.log(data.roomname);
-      
       socket.join(data.roomname);
     })
 });
