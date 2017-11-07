@@ -46,7 +46,7 @@ app.post('/addweight/', function(req, res) {
     var computername = req.body.computername;
     //console.log(weight);
     //console.log(computername);
-    io.sockets.to(computername).emit('new message',{
+    io.sockets.in(computername).emit('new message',{
     username : computername,
     message : weight,
     computername : computername
@@ -57,8 +57,9 @@ app.post('/addweight/', function(req, res) {
 //events
 io.on('connection', function (socket) {
   socket.on('creategroup',function(data){
-    	console.log('hello from on.connection');
-    	console.log(data.roomname);
+    	//console.log('hello from on.connection');
+    	//console.log(data.roomname);
+      
       socket.join(data.roomname);
     })
 });
