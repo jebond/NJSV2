@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
       console.log('dns reolved hostname ' + resolved);
       if (resolved != null || resolved != '') {
       res.cookie('TNTscale',resolved);
-      io.socket.join(resolved);
+      //io.socket.join(resolved);
       res.sendFile(__dirname + '/index.html');
       }
       else {
@@ -58,7 +58,7 @@ app.post('/addweight/', function(req, res) {
 io.on('connection', function (socket) {
   socket.on('creategroup',function(data){
     	console.log('hello from on.connection');
-    	//socket.join(data.roomname);
+    	socket.join(data.roomname);
     })
 });
 
