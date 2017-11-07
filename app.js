@@ -41,6 +41,8 @@ app.post('/addweight/', function(req, res) {
 
     var weight = req.body.weight;
     var computername = req.body.computername;
+    console.log(typeof(computername));
+    console.log(length(computername));
     io.sockets.in(computername).emit('new message',{
     username : computername,
     message : weight,
