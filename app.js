@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 //server init
-server.listen(80);
-console.log('Here we are again listening on port 80');
+server.listen(3000);
+console.log('Here we are again listening on port 3000');
 //routes
 
 app.get('/', function (req, res) {
