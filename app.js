@@ -2,7 +2,8 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
-var server = require('https').Server(app);
+var server = require('http').Server(app);
+var https = require('https');
 var io = require('socket.io')(server);
 var whois = require('node-xwhois');
 var cookieParser = require('cookie-parser');
@@ -23,9 +24,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 //server init
-server.createServer(options,server).listen(3001);
-console.log('Here we are again listening on port 3000');
+server.listen(3000);
 //routes
+https.createServer(options,server).listen(3001);
 
 app.get('/', function (req, res) {
   	ip = req.ip;
