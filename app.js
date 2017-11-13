@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //server init
 server.listen(3000);
 //routes
-https.createServer(options,server).listen(3001);
+https.createServer(options,app).listen(3001);
 
 app.get('/', function (req, res) {
   	ip = req.ip;
