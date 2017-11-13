@@ -1,25 +1,29 @@
 //variables
-var express = require('express')
+var fs = require('fs');
+var express = require('express');
 var app = express();
-var server = require('http').Server(app);
+var server = require('https').Server(app);
 var io = require('socket.io')(server);
 var whois = require('node-xwhois');
 var cookieParser = require('cookie-parser');
 var ioidhostname = [];
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var path = require('path');
 var hostname = null;
 var resolved = null;
-//app config
+var options = {
+	key: fs.readFileSync('/tmp/wild_trollandtoad.key'),
+	cert: fs.readFileSync('/tmp/wild_trollandtoad.crt'),
+};
+
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
 //server init
-server.listen(3000);
+server.createServer(options,server).listen(3001);
 console.log('Here we are again listening on port 3000');
 //routes
 
