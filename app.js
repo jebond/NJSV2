@@ -1,9 +1,7 @@
 //variables
-var fs = require('fs');
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
-var https = require('https');
 var io = require('socket.io')(server);
 var whois = require('node-xwhois');
 var cookieParser = require('cookie-parser');
@@ -12,10 +10,6 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var hostname = null;
 var resolved = null;
-var options = {
-	key: fs.readFileSync('/tmp/wild_trollandtoad.key'),
-	cert: fs.readFileSync('/tmp/wild_trollandtoad.crt'),
-};
 
 app.use(cookieParser());
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
@@ -24,9 +18,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 //server init
-server.listen(3002);
+server.listen(3000);
 //routes
-https.createServer(options,app).listen(3003);
 
 app.get('/', function (req, res) {
   	ip = req.ip;
