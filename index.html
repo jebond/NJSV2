@@ -7,7 +7,7 @@
 	
   $(function() {
   var $window = $(window);
-  var socket = io.connect();
+  var socket = io.connect('https://localhost:3003', {secure: true});
   var username = '';
   var connected = true;
   var typing = false;
