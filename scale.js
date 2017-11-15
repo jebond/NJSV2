@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
       ip = req.headers['x-real-ip'];
      // console.log(ip);
      // simpleip = ip.substr(7);
-      resolved = dnsResolve(ip);
+      resolved = dnsResolve(ip).toString();
       if (resolved != null || resolved != '') {
       res.setHeader("hostname",resolved);
       res.cookie('TNTscale',resolved);
@@ -38,7 +38,6 @@ app.get('/', function (req, res) {
 
 //postroute for the service
 app.post('/addweight/', function(req, res) {
-
     var weight = req.body.weight;
     var computername = req.body.computername;
     io.sockets.in(computername).emit('new message',{
