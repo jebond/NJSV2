@@ -25,9 +25,9 @@ app.get('/', function (req, res) {
       ip = req.headers['x-real-ip'];
      // console.log(ip);
      // simpleip = ip.substr(7);
-      resolved = dnsResolve(ip).toString();
+      resolved = dnsResolve(ip);
       if (resolved != null || resolved != '') {
-      res.setHeader("hostname",resolved);
+      res.setHeader("hostname", "'" + resolved + "'");
       res.cookie('TNTscale',resolved);
       //res.sendFile(__dirname + '/index.html');
       }
