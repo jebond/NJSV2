@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
       if (resolved != null || resolved != '') {
       res.setHeader("hostname", "'" + resolved + "'");
       res.cookie('TNTscale',resolved);
-      //res.sendFile(__dirname + '/index.html');
+      res.sendFile(__dirname + '/index.html');
       }
       else {
       res.sendFile(__dirname + '/index.html');  	  
