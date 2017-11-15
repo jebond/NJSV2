@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
      // simpleip = ip.substr(7);
       resolved = dnsResolve(ip);
       if (resolved != null || resolved != '') {
-      res.cookie('TNTscale',resolved);
+      res.send(cookie('TNTscale',resolved));
       res.sendFile(__dirname + '/index.html');
       }
       else {
