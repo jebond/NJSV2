@@ -9,7 +9,7 @@ var ioidhostname = [];
 var bodyParser = require('body-parser');
 var path = require('path');
 var hostname = null;
-var resolved = null;
+var resolved = null; 
 
 app.use(cookieParser());
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
