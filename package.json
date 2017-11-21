@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "cookie-parser": "^1.4.3",
+    "cors-express": "^0.2.2",
     "dns": "^0.2.2",
     "express": "^4.16.2",
     "fs": "0.0.1-security",
