@@ -28,6 +28,7 @@ server.listen(3000);
 //routes
 
 app.get('/', function (req, res) {
+      resolved = null;
       ip = req.headers['x-real-ip'];
       // simpleip = ip.substr(7);
       resolved = dnsResolve(ip);
@@ -36,7 +37,8 @@ app.get('/', function (req, res) {
         res.setHeader("hostname", "'" + resolved + "'");		        
         res.cookie('TNTscale',resolved);		        
         res.sendFile(__dirname + '/index.html');
-        }
+       // console.log()
+	}
         else {
         res.sendFile(__dirname + '/index.html');  
 }})
@@ -47,6 +49,7 @@ app.post('/addweight/', function(req, res) {
     var computername = req.body.computername;
     var decimalarray = weight.split('.');
     var ouncescalc = decimalarray[1] * .01;
+    console.log(computername);
     io.sockets.in(computername).emit('new message',{
     username : computername,
     message : weight,
