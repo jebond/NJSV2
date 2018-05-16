@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "cors-express": "^0.2.2",
     "dns": "^0.2.2",
     "express": "^4.16.2",
@@ -12,7 +13,7 @@
     "js-cookie": "^2.2.0",
     "node-xwhois": "^1.0.7",
     "pm2": "^2.7.2",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.1.0"
   },
   "devDependencies": {},
   "scripts": {
